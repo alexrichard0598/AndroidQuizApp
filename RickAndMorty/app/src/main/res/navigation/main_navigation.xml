@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/title_fragment">
+
+    <fragment
+        android:id="@+id/title_fragment"
+        android:name="alex.richard.rickandmortyquizapp.Title"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_title" >
+        <action
+            android:id="@+id/action_title2_to_questions"
+            app:destination="@id/questions" />
+    </fragment>
+    <fragment
+        android:id="@+id/rules"
+        android:name="alex.richard.rickandmortyquizapp.Rules"
+        android:label="fragment_rules"
+        tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/questions"
+        android:name="alex.richard.rickandmortyquizapp.Questions"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions" >
+        <action
+            android:id="@+id/action_questions_to_endScreen"
+            app:destination="@id/endScreen"
+            app:popUpTo="@id/title_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/about"
+        android:name="alex.richard.rickandmortyquizapp.About"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/endScreen"
+        android:name="alex.richard.rickandmortyquizapp.EndScreen"
+        android:label="fragment_end_screen"
+        tools:layout="@layout/fragment_end_screen" />
+</navigation>

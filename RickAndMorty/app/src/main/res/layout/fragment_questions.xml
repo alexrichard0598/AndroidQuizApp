@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Questions">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/questionsImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/rnm02" />
+
+        <TextView
+            android:id="@+id/questionsQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textColor="@color/teal_700"
+            app:layout_constraintTop_toBottomOf="@+id/questionsImage"
+            tools:text="Question Text Goes Here" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@+id/questionsScore">
+
+            <Button
+                android:id="@+id/btnPrev"
+                android:layout_width="@dimen/question_button_size"
+                android:layout_height="@dimen/question_button_size"
+                android:text="@string/prev_button" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="True" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="False" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="@dimen/question_button_size"
+                android:layout_height="@dimen/question_button_size"
+                android:text="@string/next_button" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/questionsScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="Score"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

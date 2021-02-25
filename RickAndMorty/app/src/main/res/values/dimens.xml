@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="verticle_padding">25dp</dimen>
+    <dimen name="header_size">40sp</dimen>
+    <dimen name="question_button_size">40dp</dimen>
+</resources>
