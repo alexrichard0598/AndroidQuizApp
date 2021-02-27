@@ -59,11 +59,6 @@ class Questions : Fragment() {
             viewModel.answeredCorrectly.observe(
                 viewLifecycleOwner,
                 { newAnsweredCorrectly ->
-
-                    val radioButtonsState = viewModel.getRadioState()
-                    questionsTrue.isChecked = radioButtonsState.first
-                    questionsFalse.isChecked = radioButtonsState.second
-
                     if (newAnsweredCorrectly != null) {
                         if (newAnsweredCorrectly) {
                             questionsCorrectImage.setImageResource(R.drawable.right_24)
@@ -73,6 +68,10 @@ class Questions : Fragment() {
                     } else {
                         questionsCorrectImage.setImageResource(0)
                     }
+
+                    val radioButtonsState = viewModel.getRadioState()
+                    questionsTrue.isChecked = radioButtonsState.first
+                    questionsFalse.isChecked = radioButtonsState.second
                 }
             )
 
