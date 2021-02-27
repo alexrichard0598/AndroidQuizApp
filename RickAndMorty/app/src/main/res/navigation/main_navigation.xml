@@ -38,5 +38,9 @@
         android:id="@+id/endScreen"
         android:name="alex.richard.rickandmortyquizapp.EndScreen"
         android:label="fragment_end_screen"
-        tools:layout="@layout/fragment_end_screen" />
+        tools:layout="@layout/fragment_end_screen" >
+        <argument
+            android:name="scoreString"
+            app:argType="string" />
+    </fragment>
 </navigation>

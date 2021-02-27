@@ -72,8 +72,27 @@ class QuestionsViewModel : ViewModel() {
         updateQuestion()
     }
 
-    fun getCorrectAnswer(): Boolean {
-        return _questionBank[questionIndex].answer
+    fun getRadioState(): Pair<Boolean, Boolean> {
+        var trueChecked = false
+        var falseChecked = false
+
+        if (answeredCorrectly.value != null) {
+            if (answeredCorrectly.value == true) {
+                if (_questionBank[questionIndex].answer) {
+                    trueChecked = true
+                } else {
+                    falseChecked = true
+                }
+            } else {
+                if (_questionBank[questionIndex].answer) {
+                    falseChecked = true
+                } else {
+                    trueChecked = true
+                }
+            }
+        }
+
+        return Pair(trueChecked, falseChecked)
     }
 
     private fun resetQuestions() {
@@ -102,7 +121,7 @@ class QuestionsViewModel : ViewModel() {
 
     private fun updateQuestion() {
         val question = _questionBank[questionIndex]
-        _score.value = "Score: ${answeredCorrect}/${attempted}"
+        _score.value = "${answeredCorrect}/${attempted}"
         _question.value = question.question
         _buttonsEnabled.value = !question.attempted
 
@@ -112,7 +131,7 @@ class QuestionsViewModel : ViewModel() {
             _answeredCorrectly.value = null
         }
 
-        if(attempted == _questionBank.count()) {
+        if (attempted == _questionBank.count()) {
             _gameFinished.value = true
         }
 

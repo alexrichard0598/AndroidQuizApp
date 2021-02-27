@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -47,7 +48,9 @@ class Questions : Fragment() {
             viewModel.score.observe(
                 viewLifecycleOwner,
                 { newScore ->
-                    questionsScore.text = newScore
+                    questionsScore.text = "Score: " + newScore
+                    (activity as AppCompatActivity).supportActionBar?.title =
+                        "Rick and Morty Quiz (${newScore})"
                 }
             )
 
@@ -56,36 +59,30 @@ class Questions : Fragment() {
             viewModel.answeredCorrectly.observe(
                 viewLifecycleOwner,
                 { newAnsweredCorrectly ->
-                    if (newAnsweredCorrectly == null) {
-                        questionsCorrectImage.setImageResource(0)
-                        questionsTrue.isChecked = false
-                        questionsFalse.isChecked = false
-                    } else if (newAnsweredCorrectly) {
-                        questionsCorrectImage.setImageResource(R.drawable.right_24)
-                        if (viewModel.getCorrectAnswer()) {
-                            questionsTrue.isChecked = true
-                            questionsFalse.isChecked = false
+
+                    val radioButtonsState = viewModel.getRadioState()
+                    questionsTrue.isChecked = radioButtonsState.first
+                    questionsFalse.isChecked = radioButtonsState.second
+
+                    if (newAnsweredCorrectly != null) {
+                        if (newAnsweredCorrectly) {
+                            questionsCorrectImage.setImageResource(R.drawable.right_24)
                         } else {
-                            questionsTrue.isChecked = false
-                            questionsFalse.isChecked = true
+                            questionsCorrectImage.setImageResource(R.drawable.wrong_24)
                         }
                     } else {
-                        questionsCorrectImage.setImageResource(R.drawable.wrong_24)
-                        if (viewModel.getCorrectAnswer()) {
-                            questionsTrue.isChecked = false
-                            questionsFalse.isChecked = true
-                        } else {
-                            questionsTrue.isChecked = true
-                            questionsFalse.isChecked = false
-                        }
+                        questionsCorrectImage.setImageResource(0)
                     }
                 }
             )
 
-            viewModel.gameFinished.observe(viewLifecycleOwner, {
-                gameFinished ->
-                if(gameFinished) {
-                    findNavController().navigate(QuestionsDirections.actionQuestionsToEndScreen())
+            viewModel.gameFinished.observe(viewLifecycleOwner, { gameFinished ->
+                if (gameFinished) {
+                    findNavController().navigate(
+                        QuestionsDirections.actionQuestionsToEndScreen(
+                            viewModel.score.value.toString()
+                        )
+                    )
                 }
             })
 
