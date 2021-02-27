@@ -1,77 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Questions">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".Questions">
 
-        <ImageView
-            android:id="@+id/questionsImage"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/rnm02" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/questionsQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="25dp"
-            android:textColor="@color/teal_700"
-            app:layout_constraintTop_toBottomOf="@+id/questionsImage"
-            tools:text="Question Text Goes Here" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/questionsScore">
-
-            <Button
-                android:id="@+id/btnPrev"
-                android:layout_width="@dimen/question_button_size"
-                android:layout_height="@dimen/question_button_size"
-                android:text="@string/prev_button" />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/questionsImage"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:adjustViewBounds="true"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/rnm02" />
 
-                <RadioButton
-                    android:id="@+id/radioButton"
+            <TextView
+                android:id="@+id/questionsQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:textColor="@color/teal_700"
+                app:layout_constraintTop_toBottomOf="@+id/questionsImage"
+                tools:text="Question Text Goes Here" />
+
+            <LinearLayout
+                android:id="@+id/questionsControls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@+id/questionsScore">
+
+                <Button
+                    android:id="@+id/btnPrev"
+                    android:layout_width="@dimen/question_button_size"
+                    android:layout_height="@dimen/question_button_size"
+                    android:text="@string/prev_button" />
+
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="True" />
+                    android:orientation="horizontal"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp">
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="False" />
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/questionsTrue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="True"
+                        android:layout_marginEnd="10dp"/>
 
-            <Button
-                android:id="@+id/btnNext"
-                android:layout_width="@dimen/question_button_size"
-                android:layout_height="@dimen/question_button_size"
-                android:text="@string/next_button" />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/questionsScore"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="Score"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+                    <RadioButton
+                        android:id="@+id/questionsFalse"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="False"
+                        android:layout_marginStart="10dp"/>
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/btnNext"
+                    android:layout_width="@dimen/question_button_size"
+                    android:layout_height="@dimen/question_button_size"
+                    android:text="@string/next_button" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionsScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="Score" />
+
+            <ImageView
+                android:id="@+id/questionsCorrectImage"
+                app:layout_constraintTop_toBottomOf="@+id/questionsImage"
+                app:layout_constraintBottom_toTopOf="@+id/questionsControls"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>
