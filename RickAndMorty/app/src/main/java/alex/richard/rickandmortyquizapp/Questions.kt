@@ -54,8 +54,6 @@ class Questions : Fragment() {
                 }
             )
 
-            // TODO: Fix issue where radio button won't stay checked
-
             viewModel.answeredCorrectly.observe(
                 viewLifecycleOwner,
                 { newAnsweredCorrectly ->
