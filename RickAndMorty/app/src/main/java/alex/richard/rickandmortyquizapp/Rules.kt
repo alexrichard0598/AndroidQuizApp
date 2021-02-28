@@ -18,7 +18,8 @@ class Rules : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        (activity as AppCompatActivity).supportActionBar?.title = "Rules"
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.app_name) + " - " + getString(R.string.rules_name)
         return inflater.inflate(R.layout.fragment_rules, container, false)
     }
 }

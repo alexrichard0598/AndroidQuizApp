@@ -24,6 +24,7 @@
                 android:adjustViewBounds="true"
                 app:layout_constraintHeight_max="wrap"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/questionsContent"
                 android:src="@drawable/rnm02" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,8 +68,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="20dp">
+                        android:layout_marginEnd="@dimen/medium_margin"
+                        android:layout_marginStart="@dimen/medium_margin">
 
                         <RadioButton
                             android:id="@+id/questionsTrue"

@@ -19,13 +19,19 @@ class Title : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_title,
+            container,
+            false
+        )
 
         binding.btnPlay.setOnClickListener {
-            NavHostFragment.findNavController(this).navigate(TitleDirections.actionTitle2ToQuestions())
+            NavHostFragment.findNavController(this)
+                .navigate(TitleDirections.actionTitle2ToQuestions())
         }
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Rick and Morty Quiz"
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
 
         return binding.root
     }

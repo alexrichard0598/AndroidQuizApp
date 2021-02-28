@@ -28,10 +28,12 @@ class EndScreen : Fragment() {
         )
 
         binding.apply {
-            endScreenResults.text = "You scored " + arguments?.get("scoreString").toString()
+            endScreenResults.text =
+                getString(R.string.scored_text) + arguments?.get("scoreString").toString()
         }
 
-        (activity as AppCompatActivity).supportActionBar?.title = "Game Over"
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.game_over_text)
 
         return binding.root
     }

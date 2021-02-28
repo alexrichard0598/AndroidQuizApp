@@ -48,9 +48,9 @@ class Questions : Fragment() {
             viewModel.score.observe(
                 viewLifecycleOwner,
                 { newScore ->
-                    questionsScore.text = "Score: " + newScore
+                    questionsScore.text = getString(R.string.current_score_text) + newScore
                     (activity as AppCompatActivity).supportActionBar?.title =
-                        "Rick and Morty Quiz (${newScore})"
+                        getString(R.string.app_name) + " - (${newScore})"
                 }
             )
 
